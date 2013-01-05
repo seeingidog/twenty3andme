@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "twenty3andme"
   gem.homepage = "http://github.com/seeingidog/twenty3andme"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{23AndMe API client and Rails engine}
+  gem.description = %Q{Ruby API client and Rails engine for creating applications that integrate with data from the personal genetic testing service 23AndMe}
   gem.email = "ian@ruby-code.com"
   gem.authors = ["Ian Morgan"]
   # dependencies defined in Gemfile

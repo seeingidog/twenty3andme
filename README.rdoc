@@ -1,19 +1,37 @@
 = twenty3andme
 
-Description goes here.
+Ruby API client and Rails engine for creating applications that integrate with data from the personal genetic testing service 23AndMe.
 
-== Contributing to twenty3andme
- 
-* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
-* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
-* Fork the project.
-* Start a feature/bugfix branch.
-* Commit and push until you are happy with your contribution.
-* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
-* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+https://api.23andme.com/
 
-== Copyright
 
-Copyright (c) 2013 Ian Morgan. See LICENSE.txt for
-further details.
+== Install
 
+Bundler via Gemfile
+
+  gem 'twenty3andme'
+
+
+== Use with Rails
+
+Use environment variables to configure:
+
+  CLIENT_ID=
+  CLIENT_SECRET=
+  REDIRECT_URI=
+  SCOPE=
+
+
+
+
+
+== Use without Rails
+
+First, Authorize and receive the code from 23andme: https://api.23andme.com/authorize/?redirect_uri=http://localhost:5000/receive_code/&response_type=code&client_id=a8a1f21d3417b70de786daea7e9ce2a8&scope=ancestry
+
+  c = Twenty3AndMe::Client.new
+  c.request_token('client_id', 'client_secret', 'code_from_above', 'http://localhost:5000/receive_code/', ['ancestry', 'basic'])
+
+Requests can now be made
+
+  c.user
