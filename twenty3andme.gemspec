@@ -20,13 +20,21 @@ Gem::Specification.new do |s|
     ".document",
     ".rspec",
     "Gemfile",
+    "Gemfile.lock",
     "LICENSE.txt",
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "config/routes.rb",
     "lib/twenty3andme.rb",
+    "lib/twenty3andme/callback_listener.rb",
+    "lib/twenty3andme/client.rb",
+    "lib/twenty3andme/engine.rb",
+    "lib/twenty3andme/helpers.rb",
+    "spec/callback_listener_spec.rb",
     "spec/spec_helper.rb",
-    "spec/twenty3andme_spec.rb"
+    "spec/twenty3andme_spec.rb",
+    "twenty3andme.gemspec"
   ]
   s.homepage = "http://github.com/seeingidog/twenty3andme"
   s.licenses = ["MIT"]
