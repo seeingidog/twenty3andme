@@ -21,7 +21,7 @@ Use environment variables to configure:
   REDIRECT_URI=http://localhost:5000/callback_listener/
   SCOPE=basic,rs4778138,rs4778241
 
-Then implement CallbackHandler#handle to use token and redirect user. Example:
+Then implement CallbackHandler#handle to use or store token and redirect user. Example:
 
   module Twenty3AndMe
     class CallbackHandler
