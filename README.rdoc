@@ -21,6 +21,10 @@ Use environment variables to configure:
   REDIRECT_URI=http://localhost:5000/callback_listener/
   SCOPE=basic,rs4778138,rs4778241
 
+Send user to authorize app with 23andme, A URL helper is provided to help with this (url_for_23andme_authorize):
+
+  link_to 'authorize', url_for_23andme_authorize
+
 Then implement CallbackHandler#handle to use or store token and redirect user. Example:
 
   module Twenty3AndMe
