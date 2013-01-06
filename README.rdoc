@@ -19,7 +19,8 @@ Use environment variables to configure:
   CLIENT_ID=shdfkjhsdfkj23
   CLIENT_SECRET=sadiuyf79238
   REDIRECT_URI=http://localhost:5000/callback_listener/
-  SCOPE=basic,rs4778138,rs4778241
+  AFTER_REDIRECT_URI=/
+  SCOPE=basic,rs3094315
 
 Send user to authorize app with 23andme, A URL helper is provided to help with this (url_for_23andme_authorize):
 
@@ -31,10 +32,16 @@ Then implement CallbackHandler#handle to use or store token and redirect user. E
     class CallbackHandler
       def handle(token, refresh_token)
         User.create(:token => token, :refresh_token => refresh_token)
-        redirect_to '/'
       end
     end
   end
+
+Now requests can be made with the stored token:
+
+  user = User.first
+  client = Twenty3AndMe::Client.new
+  client.token = user.token
+  client.genotype('rs3094315')
 
 
 == Use without Rails

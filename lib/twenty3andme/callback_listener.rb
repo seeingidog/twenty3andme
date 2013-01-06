@@ -3,10 +3,15 @@ module Twenty3AndMe
 
       resources do
         get do
-          @code = params.code
-          c = Client.new
-          c.request_token(ENV['CLIENT_ID'], ENV['CLIENT_SECRET'], @code, ENV['REDIRECT_URI'], ENV['SCOPE'].split(','))
-          Twenty3AndMe::CallbackHandler.handle(c.token, c.refresh_token)
+          code = params.code
+          client = Client.new
+          client.request_token(ENV['CLIENT_ID'], ENV['CLIENT_SECRET'], code, ENV['REDIRECT_URI'], ENV['SCOPE'].split(','))
+          
+          handler = Twenty3AndMe::CallbackHandler.new
+          handler.handle(client.token, client.refresh_token)
+          
+          status 302
+          header 'Location', ENV['AFTER_REDIRECT_URI']
         end
       end
 

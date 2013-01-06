@@ -6,8 +6,7 @@ describe "Twenty3andme" do
     before do
     end
     
-    it "should " do
-      fail "hey buddy, you should probably rename this file and start specing for real"
+    pending "test the client " do
     end
   end
   
