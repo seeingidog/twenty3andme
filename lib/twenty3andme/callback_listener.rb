@@ -11,7 +11,7 @@ module Twenty3AndMe
           handler.handle(client.token, client.refresh_token)
           
           status 302
-          header 'Location', ENV['AFTER_REDIRECT_URI'] + "?code=#{code}"
+          header 'Location', ENV['AFTER_REDIRECT_URI'] + "?token=#{client.token}"
         end
       end
 
