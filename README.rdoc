@@ -46,7 +46,7 @@ Now requests can be made with the stored token:
 
 == Use without Rails
 
-First, Authorize and receive the code from 23andme: https://api.23andme.com/authorize/?redirect_uri=http://localhost:5000/receive_code/&response_type=code&client_id=a8a1f21d3417b70de786daea7e9ce2a8&scope=ancestry
+First, Authorize and receive the code from 23andme: https://api.23andme.com/authorize/?redirect_uri=http://localhost:5000/receive_code/&response_type=code&client_id=a8a1f21d3417b70de786daea7e9ce2a8&scope=names basic haplogroups relatives genome
 
   c = Twenty3AndMe::Client.new
   c.request_token('client_id', 'client_secret', 'code_from_above', 'http://localhost:5000/receive_code/', ['ancestry', 'basic', 'rs4778241'])

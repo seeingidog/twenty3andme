@@ -14,7 +14,9 @@ module Twenty3AndMe
       options = { :headers => {"Authorization" => "Bearer #{@token}"} }
       fullpath = URI.escape(VERSION + path)
       resp = self.class.get(fullpath, options).parsed_response
-      raise APIRequestError, resp['error_description'] if resp['error']
+      if resp.class == Hash
+        raise APIRequestError, resp['error_description'] if resp['error']
+      end
       resp
     end
     
