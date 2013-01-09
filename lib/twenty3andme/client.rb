@@ -1,4 +1,7 @@
 module Twenty3AndMe
+  class TokenRequestError < StandardError ; end
+  class APIRequestError < StandardError ; end
+  
   class Client
     include HTTParty
     base_uri 'api.23andme.com'
@@ -10,13 +13,16 @@ module Twenty3AndMe
     def get(path)
       options = { :headers => {"Authorization" => "Bearer #{@token}"} }
       fullpath = URI.escape(VERSION + path)
-      self.class.get(fullpath, options).parsed_response
+      resp = self.class.get(fullpath, options).parsed_response
+      raise APIRequestError, resp['error_description'] if resp['error']
+      resp
     end
     
     def request_token(client_id, client_secret, code, redirect_uri, scope)
       scope_uri = Array(scope).join(" ")
       req_body = {:client_id => client_id, :client_secret => client_secret, :grant_type => 'authorization_code', :code => code, :redirect_uri => redirect_uri, :scope => scope_uri}
       resp = self.class.post("https://api.23andme.com:443/token", :body => req_body)
+      raise TokenRequestError, resp['error_description'] if resp['error']
       
       @token = resp['access_token']
       @refresh_token = resp['refresh_token']
