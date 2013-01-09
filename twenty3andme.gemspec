@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "twenty3andme"
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ian Morgan"]
-  s.date = "2013-01-06"
+  s.date = "2013-01-09"
   s.description = "Ruby API client and Rails engine for creating applications that integrate with data from the personal genetic testing service 23AndMe"
   s.email = "ian@ruby-code.com"
   s.extra_rdoc_files = [
